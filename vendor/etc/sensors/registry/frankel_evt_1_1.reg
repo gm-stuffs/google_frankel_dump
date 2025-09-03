@@ -1,0 +1,63 @@
+#
+# Frankel sensor device configuration registry script for the EVT 1.1 stage.
+#
+# Source of truth: go/pixel-sensor-list
+#
+
+#
+# CDT Filter <CDT>:<mask>
+# CDT format: <0xPPPPSJIV> (P:Product, S:Stage, J:Major, I:Minor, V:Variant)
+# go/pixel-cdt-lga
+#
+
+?+0x33000:0xFFFF000   # EVT stage
+# Exclude
+?-0x33100:0xFFFFFFF0  # EVT 1.0
+
+#
+# Record reg_script.
+#
+
++/
+reg_script=frankel_evt_1_1.reg
+
+#
+# Sensors
+#
++/dev/mmc5616/0/mag
+  fac_cal_transform=0.8824 0.0432 -0.0211 0.1235 1.0531 0.0559 -0.0265 -0.0468 1.1596 0.0 0.0 0.0
+  curr_comp_factors_fast=3.51 2.15 7.89
+  curr_comp_factors=6.88 3.99 16.15
+
+# ALSP (TMD3743)
++/dev/tmd3743/0/als
+  x_scale=1.163
+  lux_scale=1.156
+  z_scale=1.175
+  x_crgbw_coefs=-37.408235 43.854591 129.513772 -9.300066 -2.601188
+  lux_crgbw_coefs=-27.257599 26.672212 124.899590 0.132850 -1.952329
+  z_crgbw_coefs=30.456540 -57.486146 -0.813766 132.762996 1.365894
+
++/dev/tmd3743/0/panel-b/als
+  x_scale=1.134
+  lux_scale=1.111
+  z_scale=1.043
+
++/dev/tmd3743/0/prox
+  gain1=128
+  gain2=1
+  pulse_count=2
+  pulse_len_us=32
+
+# RAINBOW (VD6282)
++/dev/vd6282/0/spectral
+  # Golden values for calibration.
+  golden_rals_r=954.839453125
+  golden_rals_g=1102.59609375
+  golden_rals_b=279.598828125
+  golden_rals_clr1=4750.83789062
+  golden_rals_ir=2950.51328125
+  golden_rals_clr2=4790.44023437
+
++/dev/vd6282/0/rls
+  lux_scale=111.11173
