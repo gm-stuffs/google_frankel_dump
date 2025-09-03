@@ -1,0 +1,14 @@
+# frankel-user 16 BD3A.250721.001.B7 13955164 release-keys
+- manufacturer: google
+- platform: laguna
+- codename: frankel
+- flavor: frankel-user
+- release: 16
+- id: BD3A.250721.001.B7
+- incremental: 13955164
+- tags: release-keys
+- fingerprint: google/frankel/frankel:16/BD3A.250721.001.B7/13955164:user/release-keys
+- is_ab: true
+- brand: google
+- branch: frankel-user-16-BD3A.250721.001.B7-13955164-release-keys
+- repo: google_frankel_dump
